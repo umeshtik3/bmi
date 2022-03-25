@@ -1,16 +1,12 @@
-# bmi
+# bmi calculator
 
-A new Flutter project.
+It's a basic bmi calculator.
 
-## Getting Started
+## What should you look into project 
+- although it's a simple one page app, but code is clean,well written.
+- following a MVC structure architecture to better app design
+- simple design
+- Even for simple app I used provider package for state management.
 
-This project is a starting point for a Flutter application.
+![bmi_calculator](https://user-images.githubusercontent.com/47592884/160113169-150e9437-f766-4ac1-a779-a21c922e1ddd.png)   ![bmi_calculator _resultpng](https://user-images.githubusercontent.com/47592884/160113587-e2332f05-6f23-422b-9b95-a3b53117563f.png)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
