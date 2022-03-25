@@ -8,10 +8,5 @@ It's a basic bmi calculator.
 - simple design
 - Even for simple app I used provider package for state management.
 
-Here is the Design of Inputs like gender, height, weight and age
-![bmi_calculator](https://user-images.githubusercontent.com/47592884/160113169-150e9437-f766-4ac1-a779-a21c922e1ddd.png)
-
-
-And the result page
-![image](https://user-images.githubusercontent.com/47592884/160112397-9423dfca-716d-4d28-8c23-1be0b80da5ee.png)
+![bmi_calculator](https://user-images.githubusercontent.com/47592884/160113169-150e9437-f766-4ac1-a779-a21c922e1ddd.png)![bmi_calculator _resultpng](https://user-images.githubusercontent.com/47592884/160113587-e2332f05-6f23-422b-9b95-a3b53117563f.png)
 
