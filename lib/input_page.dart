@@ -29,8 +29,8 @@ class _InputPageState extends State<InputPage> {
     var weightAndAgeModule = Expanded(
       child: Row(
         children: [
-          WeightModule(sliderWeight: sliderWeight),
-          AgeModule(sliderAge: sliderAge),
+          WeightModule(),
+          AgeModule(),
         ],
       ),
     );
@@ -42,8 +42,8 @@ class _InputPageState extends State<InputPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          GenderModule(selectGender: selectGender),
-          HeightModule(sliderHeight: sliderHeight),
+          GenderModule(),
+          HeightModule(),
           weightAndAgeModule,
           CalculateBmiButton(
               sliderHeight: sliderHeight, sliderWeight: sliderWeight)

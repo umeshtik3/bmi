@@ -1,7 +1,7 @@
 import 'package:bmi_calculator/common/common_button_widget.dart';
+import 'package:bmi_calculator/controller/data_provider.dart';
 import 'package:flutter/material.dart';
-
-import '../logic/bmi_calculator.dart';
+import 'package:provider/provider.dart';
 import '../result_screen.dart';
 
 class CalculateBmiButton extends StatelessWidget {
@@ -16,26 +16,27 @@ class CalculateBmiButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        calculateBmiAndLaunchResultScreen(context);
-      },
-      child: CommonButtonWidget(
-        buttonName: 'CALCULATE YOUR BMI',
+    return Consumer<DataProvider>(
+      builder: (context, value, child) => GestureDetector(
+        onTap: () {
+          calculateBmiAndLaunchResultScreen(context);
+        },
+        child: CommonButtonWidget(
+          buttonName: 'CALCULATE YOUR BMI',
+        ),
       ),
     );
   }
 
   void calculateBmiAndLaunchResultScreen(BuildContext context) {
-    BmiCalculator bmiCalculator =
-        BmiCalculator(height: sliderHeight!, weight: sliderWeight!);
+    var data = context.read<DataProvider>();
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ResultScreen(
-          bmiResult: bmiCalculator.calculateBMI(),
-          resultCriteria: bmiCalculator.getResult(),
-          resultDescription: bmiCalculator.getDescription(),
+          bmiResult: data.calculateBMI(),
+          resultCriteria: data.getResult(),
+          resultDescription: data.getDescription(),
         ),
       ),
     );

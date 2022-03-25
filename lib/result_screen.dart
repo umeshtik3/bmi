@@ -64,6 +64,7 @@ class ResultScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 launchInputScreen(context);
+                
               },
               child: CommonButtonWidget(buttonName: 'CALCULATE AGAIN',),
             ),

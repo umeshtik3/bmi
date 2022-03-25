@@ -1,67 +1,55 @@
 import 'package:bmi_calculator/common/gender_container.dart';
+import 'package:bmi_calculator/controller/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../style/style.dart';
 import '../input_page.dart';
 import '../common/gender_text_icon.dart';
 
-class GenderModule extends StatefulWidget {
+class GenderModule extends StatelessWidget {
   GenderModule({
     Key? key,
-    @required this.selectGender,
   }) : super(key: key);
 
-  final Gender? selectGender;
-
-  @override
-  State<GenderModule> createState() => _GenderModuleState();
-}
-
-class _GenderModuleState extends State<GenderModule> {
-  Gender? selectedGender;
-  @override
-  void initState() {
-    selectedGender = widget.selectGender;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Row(
-        children: [
-          Expanded(
-            child: GenderContainer(
-              onPressed: () {
-                setState(() {
-                  selectedGender = Gender.male;
-                });
-              },
-              colors:
-                  selectedGender == Gender.male ? activeColor : deActiveColor,
-              cardWidget: GenderTextAndIcon(
-                iconData: FontAwesomeIcons.person,
-                label: 'MALE',
+      child: Consumer<DataProvider>(
+        builder: (context, value, child) => Row(
+          children: [
+            Expanded(
+              child: GenderContainer(
+                onPressed: () {
+                  value.checkGender(Gender.male);
+                },
+                colors: value.selectGender == Gender.male
+                    ? activeColor
+                    : deActiveColor,
+                cardWidget: GenderTextAndIcon(
+                  iconData: FontAwesomeIcons.person,
+                  label: 'MALE',
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: GenderContainer(
-              onPressed: () {
-                setState(() {
-                  selectedGender = Gender.female;
-                });
-              },
-              colors:
-                  selectedGender == Gender.female ? activeColor : deActiveColor,
-              cardWidget: GenderTextAndIcon(
-                iconData: FontAwesomeIcons.personDress,
-                label: 'FEMALE',
+            Expanded(
+              child: GenderContainer(
+                onPressed: () {
+                  value.checkGender(Gender.female);
+                },
+                colors: value.selectGender == Gender.female
+                    ? activeColor
+                    : deActiveColor,
+                cardWidget: GenderTextAndIcon(
+                  iconData: FontAwesomeIcons.personDress,
+                  label: 'FEMALE',
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

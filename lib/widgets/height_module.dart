@@ -1,31 +1,19 @@
 import 'package:bmi_calculator/common/gender_container.dart';
+import 'package:bmi_calculator/controller/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../common/custom_text.dart';
 import '../style/style.dart';
 
-class HeightModule extends StatefulWidget {
+class HeightModule extends StatelessWidget {
   const HeightModule({
     Key? key,
-    @required this.sliderHeight,
   }) : super(key: key);
-
-  final int? sliderHeight;
-
-  @override
-  State<HeightModule> createState() => _HeightModuleState();
-}
-
-class _HeightModuleState extends State<HeightModule> {
-  int? height;
-  @override
-  void initState() {
-    height = widget.sliderHeight;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    var a = context.read<DataProvider>();
     return Expanded(
       child: GenderContainer(
         colors: Color(0xFF1D1E33),
@@ -39,9 +27,11 @@ class _HeightModuleState extends State<HeightModule> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText(
-                  titleText: height.toString(),
-                  textStyle: NumberStyle,
+                Consumer<DataProvider>(
+                  builder: (context, value, child) => CustomText(
+                    titleText: value.height.toString(),
+                    textStyle: NumberStyle,
+                  ),
                 ),
                 CustomText(
                   titleText: 'cm',
@@ -49,17 +39,17 @@ class _HeightModuleState extends State<HeightModule> {
                 ),
               ],
             ),
-            Slider(
-              value: height!.toDouble(),
-              min: 120.0,
-              max: 220.0,
-              activeColor: Color(0xFFEB1555),
-              inactiveColor: Color(0xFF8D8E98),
-              onChanged: (double newValue) {
-                setState(() {
-                  height = newValue.round();
-                });
-              },
+            Consumer<DataProvider>(
+              builder: (context, value, child) => Slider(
+                value: a.height,
+                min: a.minHeight,
+                max: a.maxHeight,
+                activeColor: Color(0xFFEB1555),
+                inactiveColor: Color(0xFF8D8E98),
+                onChanged: (double newValue) {
+                  a.changeInHeight(newValue);
+                },
+              ),
             )
           ],
         ),
